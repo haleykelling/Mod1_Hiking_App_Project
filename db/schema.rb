@@ -13,8 +13,10 @@
 ActiveRecord::Schema.define(version: 2020_05_26_225335) do
 
   create_table "favorites_lists", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "hike_id"
+    t.integer "hike_id", null: false
+    t.integer "user_id", null: false
+    t.index ["hike_id"], name: "index_favorites_lists_on_hike_id"
+    t.index ["user_id"], name: "index_favorites_lists_on_user_id"
   end
 
   create_table "hikes", force: :cascade do |t|
@@ -26,7 +28,8 @@ ActiveRecord::Schema.define(version: 2020_05_26_225335) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "location"
   end
 
+  add_foreign_key "favorites_lists", "hikes"
+  add_foreign_key "favorites_lists", "users"
 end

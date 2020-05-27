@@ -1,4 +1,5 @@
-
+User.destroy_all
+Hike.destroy_all
 
 
 #Hike.create(name, location, length, difficulty)
