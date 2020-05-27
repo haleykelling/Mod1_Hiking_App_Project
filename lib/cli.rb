@@ -24,7 +24,7 @@ class Cli
             when "3"
                 $user.add_to_my_favorites
             when "4"
-                puts "remove this one!"
+                $user.edit_my_favorites
             when "5"
                 puts "Goodbye!"
         end   

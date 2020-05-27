@@ -9,6 +9,9 @@ class Hike < ActiveRecord::Base
         
         self.all.each_with_index do |hike, index|
             puts "#{index + 1}. #{hike.name}"
+            puts "      #{hike.location}"
+            puts "      #{hike.length} miles"
+            puts "      Difficulty: #{hike.difficulty}"
         end
     end
 
