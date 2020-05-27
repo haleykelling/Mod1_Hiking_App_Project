@@ -1,4 +1,3 @@
-User.destroy_all
 Hike.destroy_all
 
 

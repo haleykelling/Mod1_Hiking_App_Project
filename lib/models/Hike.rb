@@ -4,8 +4,13 @@ class Hike < ActiveRecord::Base
 
 
     def self.browse_hikes
-        self.all.map do |hike|
-            hike.name
+        system("clear")
+        puts "Here are all the hikes we have:\n\n"
+        
+        self.all.each_with_index do |hike, index|
+            puts "#{index + 1}. #{hike.name}"
         end
     end
+
+
 end
