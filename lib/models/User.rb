@@ -16,14 +16,13 @@ class User < ActiveRecord::Base
         end
     end
 
-    def add_to_my_favorites
-        Hike.browse_hikes
+    def add_to_my_favorites(list_of_hikes = Hike.all)
         puts "Which hike would you like to add?"
         loop do
             user_choice = gets.strip.to_i
-            if user_choice > 0 && user_choice <= Hike.all.length  
-                selected_hike = Hike.all[user_choice - 1]
-                new_favorite = FavoritesList.create(hike: selected_hike, user: $user)
+            if user_choice > 0 && user_choice <= list_of_hikes.length
+                selected_hike = list_of_hikes[user_choice - 1]
+                new_favorite = FavoritesList.find_or_create_by(hike: selected_hike, user: $user)
                 show_my_favorites
                 break
             else
