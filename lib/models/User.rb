@@ -59,8 +59,9 @@ class User < ActiveRecord::Base
         hike_selection = gets.strip.to_i
         hike_to_delete_from_my_favorites = my_hikes[hike_selection - 1]
         
-        favorites_list_entry_to_delete = FavoritesList.where(user_id: $user.id, hike_id: hike_to_delete_from_my_favorites.id)
-        favorites_list_entry_to_delete.destroy(1)
+        favorites_list_entry_to_delete = FavoritesList.find_by(user_id: $user.id, hike_id: hike_to_delete_from_my_favorites.id)
+        
+        favorites_list_entry_to_delete.destroy
         
         puts "Here is your updated favorites list:\n\n"
         show_my_favorites
