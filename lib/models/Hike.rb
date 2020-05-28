@@ -13,6 +13,7 @@ class Hike < ActiveRecord::Base
             puts "      #{hike.length} miles"
             puts "      Difficulty: #{hike.difficulty}"
         end
+        
     end
 
 

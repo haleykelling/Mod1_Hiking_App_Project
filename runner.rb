@@ -6,9 +6,9 @@ app.greeting
 
 User.find_or_create_user
 
-app.show_main_menu
+Cli.show_main_menu
 
-app.user_selection_from_main_menu
+Cli.user_selection_from_main_menu
 
 #binding.pry
 

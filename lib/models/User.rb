@@ -18,10 +18,11 @@ class User < ActiveRecord::Base
 
     def add_to_my_favorites
         Hike.browse_hikes
-        "Which hike would you like to add?"
+        puts "Which hike would you like to add?"
         user_choice = gets.strip.to_i
         selected_hike = Hike.all[user_choice - 1]
         new_favorite = FavoritesList.create(hike: selected_hike, user: $user)
+        show_my_favorites
     end
     
     def my_favorite_hikes
@@ -43,14 +44,17 @@ class User < ActiveRecord::Base
             puts "      Difficulty: #{hike.difficulty}"
         end
         puts "\n\n"
-        puts "Would you like to edit your favorites? Y/N"
-        user_input = gets.strip.upcase
-        case user_input
-        when "Y" 
-            edit_my_favorites
-        when "N"
-            puts "Okay! No problem."
+        if my_hikes.length != 0
+            puts "Would you like to edit your favorites? Y/N"
+            user_input = gets.strip.upcase
+            case user_input
+            when "Y" 
+                edit_my_favorites
+            when "N"
+                puts "Okay! No problem."
+            end
         end
+        
     end
     
     def edit_my_favorites
@@ -65,7 +69,9 @@ class User < ActiveRecord::Base
         
         puts "Here is your updated favorites list:\n\n"
         show_my_favorites
+        
     end
+
 
 
 end

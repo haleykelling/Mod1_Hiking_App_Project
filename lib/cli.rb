@@ -5,7 +5,7 @@ class Cli
         puts "Welcome to the Hiking App!\n\n"
     end
 
-    def show_main_menu
+    def self.show_main_menu
         puts "What would you like to do?\n\n"
         puts "1. See all the hikes"
         puts "2. See your favorites list"
@@ -13,27 +13,39 @@ class Cli
         puts "4. Exit!"
     end
 
-    def user_selection_from_main_menu
+    def self.user_selection_from_main_menu
         user_choice = gets.strip.to_i
         case user_choice
             when 1
                 Hike.browse_hikes
+                next_options
+                pick_option
             when 2
                 $user.show_my_favorites
+                next_options
+                pick_option
             when 3
                 $user.add_to_my_favorites
+                next_options
+                pick_option
             when 4
                 system("clear")
                 puts "Thanks for Visiting! Good-bye!"
                 sleep(2)
                 exit!
+            else
+                puts "Please choose a valid selection"
+                user_selection_from_main_menu
         end   
     end
 
-    def next_options
+    def self.next_options
         puts "What would you like to do next?"
         puts "1. Return to Main Menu"
         puts "2. Exit the Program"
+    end
+
+    def self.pick_option
         user_choice = gets.strip.to_i
         case user_choice
         when 1
@@ -45,6 +57,9 @@ class Cli
             puts "Thanks for Visiting! Good-bye!"
             sleep(2) 
             exit!
+        else
+            puts "Please choose a valid selection"
+            pick_option
         end
     end
 
