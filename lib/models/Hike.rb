@@ -5,13 +5,15 @@ class Hike < ActiveRecord::Base
 
     def self.browse_hikes
         system("clear")
-        puts "Here are all the hikes we have:\n\n"
+        puts "Here are all the hikes we have:"
+        puts "\n\n"
         
         self.all.each_with_index do |hike, index|
             puts "#{index + 1}. #{hike.name}"
             puts "      #{hike.location}"
             puts "      #{hike.length} miles"
             puts "      Difficulty: #{hike.difficulty}"
+            puts "\n"
         end
 
         puts "While you are here, would you like to add any of these to your favorites? Y/N"
@@ -23,6 +25,7 @@ class Hike < ActiveRecord::Base
                 break
             when "N"
                 puts "Okay! No problem."
+                puts "\n\n"
                 break
             else
                 puts "Invalid entry:  Please enter Y/N" 
@@ -32,13 +35,15 @@ class Hike < ActiveRecord::Base
 
     def self.browse_hikes_city(city)
         system("clear")
-        puts "Here are all the hikes in #{city}:\n\n"
+        puts "Here are all the hikes in #{city}:"
+        puts "\n\n"
         selected_city = Hike.where(location: city)
         selected_city.each_with_index do |hike, index|
             puts "#{index + 1}. #{hike.name}"
             puts "      #{hike.location}"
             puts "      #{hike.length} miles"
             puts "      Difficulty: #{hike.difficulty}"
+            puts "\n"
         end
 
         puts "While you are here, would you like to add any of these to your favorites? Y/N"
@@ -50,6 +55,7 @@ class Hike < ActiveRecord::Base
                 break
             when "N"
                 puts "Okay! No problem."
+                puts "\n"
                 break
             else
                 puts "Invalid entry:  Please enter Y/N" 
