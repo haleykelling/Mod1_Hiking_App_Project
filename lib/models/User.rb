@@ -8,11 +8,13 @@ class User < ActiveRecord::Base
         puts "Hello, what is your name?"
         name = gets.strip
         if User.find_by(name: name)
-            puts "Welcome back #{name}!"
+            sleep(0.3)
+            puts "Welcome back, #{name}!"
             $user = User.find_by(name: name)
         else
             $user = User.create(name: name)
-            puts "Glad to have you, #{name}!"
+            sleep(0.3)
+            puts "Nice to meet you, #{name}!"
         end
     end
 
@@ -42,12 +44,14 @@ class User < ActiveRecord::Base
     def show_my_favorites
         system("clear")
         my_hikes = my_favorite_hikes
-        puts "Here are your saved favorites:\n\n"
+        puts "Here are your favorites:"
+        puts "\n"
         my_hikes.each_with_index do |hike, index|
             puts "#{index + 1}. #{hike.name}"
             puts "      #{hike.location}"
             puts "      #{hike.length} miles"
             puts "      Difficulty: #{hike.difficulty}"
+            puts "\n"
         end
         puts "\n\n"
         if my_hikes.length != 0
@@ -60,6 +64,7 @@ class User < ActiveRecord::Base
                     break
                 when "N"
                     puts "Okay! No problem."
+                    puts "\n"
                     break
                 else
                     puts "Invalid entry:  Please enter Y/N" 
@@ -83,7 +88,8 @@ class User < ActiveRecord::Base
                 puts "Please choose again - invalid entry"
             end
         end
-        puts "Here is your updated favorites list:\n\n"
+        puts "Here is your updated favorites list:"
+        puts "\n"
         show_my_favorites
     end
           
