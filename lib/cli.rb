@@ -1,6 +1,6 @@
 class Cli
 
-    def app_banner
+    def self.app_banner
         puts "\n\n"
         puts " _____     _                  _   _ _ _        _ "
         puts "|_   _|_ _| | _____    __ _  | | | (_) | _____| |"
@@ -10,7 +10,7 @@ class Cli
         puts "\n\n\n"
     end
 
-    def welcome_banner
+    def self.welcome_banner
         puts "\n"
         puts " _    _      _                            _      "
         puts "| |  | | ___| | ___ ___  _ __ ___   ___  | |_ ___"   
@@ -34,8 +34,8 @@ class Cli
 
     def greeting
         system("clear")
-        welcome_banner
-        app_banner
+        Cli.welcome_banner
+        Cli.app_banner
     end
 
     def self.show_main_menu
